@@ -1,0 +1,23 @@
+{
+  "name": "portal_noticias",
+  "version": "1.0.0",
+  "description": "aulas de node js com mongodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiagoemprego/node-js-aulas.git"
+  },
+  "author": "Tiago marques",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tiagoemprego/node-js-aulas/issues"
+  },
+  "homepage": "https://github.com/tiagoemprego/node-js-aulas#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
