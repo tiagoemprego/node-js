@@ -8,11 +8,12 @@ module.exports = function(app)
             password: 'cat12345',
             database: 'portal_noticias'
         });
-
         conection.query('select * from noticias', function (error,result) {
-           res.send(result)
-        });
+            res.send(result);
 
+            console.log(result);
+            console.log(error);
+        });
         // res.render("noticias/noticias")
     });
 };
