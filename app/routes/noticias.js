@@ -2,18 +2,22 @@ module.exports = function(app)
 {
     app.get("/noticias", function (req, res) {
         var mysql = require('mysql');
-        var conection = mysql.createConnection({
+        var connection = mysql.createConnection({
             host: 'localhost',
-            usuario: 'root',
-            password: 'cat12345',
+            user: 'root',
+            password: '',
             database: 'portal_noticias'
         });
-        conection.query('select * from noticias', function (error,result) {
+
+        connection.query('select * from noticias', function (error,result)
+        {
             res.send(result);
 
+            if (error != null)
+                console.log(error);
+
             console.log(result);
-            console.log(error);
+            // res.render("noticias/noticias")
         });
-        // res.render("noticias/noticias")
     });
 };
