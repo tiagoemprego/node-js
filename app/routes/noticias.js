@@ -11,13 +11,10 @@ module.exports = function(app)
 
         connection.query('select * from noticias', function (error,result)
         {
-            res.send(result);
+            res.render("noticias/noticias", {noticias: result});
 
             if (error != null)
                 console.log(error);
-
-            console.log(result);
-            // res.render("noticias/noticias")
         });
     });
 };

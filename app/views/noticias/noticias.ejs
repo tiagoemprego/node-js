@@ -15,12 +15,12 @@
 			<th>Noticia</th>
 			<th>Data</th>
 		</tr>
-		<% for(var i=0; i<noticia.length; i++){ %>
+		<% for(var i=0; i<noticias.length; i++){ %>
 			<tr>
-				<td><%= noticia[i].id_noticia %></td>
-				<td><%= noticia[i].itulo %></td>
-				<td><%= noticia[i].noticia %></td>
-				<td><%= noticia[i].data_criacao %></td>
+				<td><%= noticias[i].id_noticia %></td>
+				<td><%= noticias[i].titulo %></td>
+				<td><%= noticias[i].noticia %></td>
+				<td><%= noticias[i].data_criacao %></td>
 			</tr>
 		<% }%>
 	</table>
