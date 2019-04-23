@@ -13,7 +13,7 @@ module.exports = function(app) {
             });
 
             if (error != null)
-                console.log(error);
+                console.log('<-><:><->',error);
         });
     });
 };
