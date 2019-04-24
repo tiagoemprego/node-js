@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-	<html lang="pt-br">
-		<head>
-			<meta charset="utf-8"/>
-			<title>Formulário de cadastro de Notícia</title>
-		</head>
-	<body>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Formulário de cadastro de Notícia</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	</head>
+<body>
+	<div class="container pt-5">
 
 		<h1>Adicionar notícia</h1>
 
-	</body>
+		<form action="/noticias/salvar" method="post">
+			<div class="form-group">
+				<label for="titulo">Titulo</label>
+				<input type="text" class="form-control" id="titulo" placeholder="titulo da noticia">
+			</div>
+			<div class="form-group">
+				<label for="noticia">Noticia</label>
+				<textarea class="form-control" id="noticia" rows="5" cols="30" placeholder="Noticia"></textarea>
+			</div>
+
+			<div class="form-group">
+				<input type="submit" class="btn btn-primary" value="Submit">
+			</div>
+		</form>
+	</div>
+</body>
 </html>

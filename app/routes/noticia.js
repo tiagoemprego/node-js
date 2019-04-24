@@ -9,6 +9,7 @@ module.exports = function (app)
         var connection = aplication.config.dbConnection();
         var noticiaModel = aplication.app.models.noticiasModel;
 
+        //# o getNoticia esta sendo chamado da pasta de model #//
         noticiaModel.getNoticia(connection,function (error, result) {
             res.render('noticias/noticia', {noticia: result})
         });
