@@ -1,15 +1,16 @@
 module.exports = function (app)
 {
+    //# para ficar mas fácil de identificar o uso da pasta app e a variável app #//
+    var aplication = app;
+
     app.get('/noticia', function (req, res)
     {
 
-        var connection = app.config.dbConnection();
+        var connection = aplication.config.dbConnection();
+        var noticiaModel = aplication.app.models.noticiasModel;
 
-        connection.query('select * from noticias where id_noticia = 2', function (error, result)
-        {
-            res.render('noticias/noticia', {
-                noticia: result
-            })
-        })
+        noticiaModel.getNoticia(connection,function (error, result) {
+            res.render('noticias/noticia', {noticia: result})
+        });
     });
 };
