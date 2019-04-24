@@ -7,6 +7,8 @@ module.exports = function(app)
 
     app.post('/noticias/salvar', function (req, res)
     {
-        res.send('recebi as informações com sucesso!');
-    })
-}
+        var noticias = req.body;
+
+        res.send(noticias);
+    });
+};
