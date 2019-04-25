@@ -13,14 +13,14 @@
 
 		<h1>Adicionar notícia</h1>
 
-		<form action="/noticias/salvar" method="post">
+		<form action="/noticias/salvar" method="POST">
 			<div class="form-group">
 				<label for="titulo">Titulo</label>
-				<input type="text" class="form-control" id="titulo" placeholder="titulo da noticia">
+				<input type="text" class="form-control" id="titulo" name="titulo" placeholder="titulo da notíocia">
 			</div>
 			<div class="form-group">
-				<label for="noticia">Noticia</label>
-				<textarea class="form-control" id="noticia" rows="5" cols="30" placeholder="Noticia"></textarea>
+				<label for="noticia">Notícia</label>
+				<textarea class="form-control" id="noticia" name="noticia" rows="5" cols="30" placeholder="Conteúdo da notícia"></textarea>
 			</div>
 
 			<div class="form-group">

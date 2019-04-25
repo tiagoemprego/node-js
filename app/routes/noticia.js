@@ -7,10 +7,10 @@ module.exports = function (app)
     {
 
         var connection = aplication.config.dbConnection();
-        var noticiaModel = aplication.app.models.noticiasModel;
+        var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
 
         //# o getNoticia esta sendo chamado da pasta de model #//
-        noticiaModel.getNoticia(connection,function (error, result) {
+        noticiaModel.getNoticia(function (error, result) {
             res.render('noticias/noticia', {noticia: result})
         });
     });
