@@ -13,10 +13,28 @@
 
 		<h1>Adicionar notícia</h1>
 
+		<% if(isError){%>
+			<div class="alert alert-danger" role="alert">
+				<h2>Todos os campos devem ser preenchidos</h2>
+			</div>
+		<%}%>
+
 		<form action="/noticias/salvar" method="POST">
 			<div class="form-group">
 				<label for="titulo">Titulo</label>
 				<input type="text" class="form-control" id="titulo" name="titulo" placeholder="titulo da notíocia">
+			</div>
+			<div class="form-group">
+				<label for="resumo">Resumo</label>
+				<input type="text" class="form-control" id="resumo" name="resumo" placeholder="Resumo da notíocia">
+			</div>
+			<div class="form-group">
+				<label for="autor">Nome do autor</label>
+				<input type="text" class="form-control" id="autor" name="autor" placeholder="Autor da notíocia">
+			</div>
+			<div class="form-group">
+				<label for="data_notici">Data dos fatos</label>
+				<input type="date" class="form-control" id="data_notici" name="data_notici" placeholder="Data da notíocia">
 			</div>
 			<div class="form-group">
 				<label for="noticia">Notícia</label>
