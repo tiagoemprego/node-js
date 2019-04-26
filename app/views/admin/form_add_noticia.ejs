@@ -3,42 +3,71 @@
 	<head>
 		<meta charset="utf-8"/>
 		<title>Formulário de cadastro de Notícia</title>
+		<script
+				src="https://code.jquery.com/jquery-3.4.0.slim.min.js"
+				integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI="
+				crossorigin="anonymous"></script>
 		<link rel="stylesheet"
 			  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 			  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 			  crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	</head>
 <body>
 	<div class="container pt-5">
 
 		<h1>Adicionar notícia</h1>
 
-		<% if(isError){%>
-			<div class="alert alert-danger" role="alert">
-				<h2>Todos os campos devem ser preenchidos</h2>
+		<% if(validacao && emptyVal){ %>
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<% for (var i=0; i<validacao.length; i++) { %>
+								<p class="m-0 text-danger"><%= validacao[i].msg %></p>
+							<% } %>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+						</div>
+					</div>
+				</div>
 			</div>
-		<%}%>
+			<script type="text/javascript">
+				$( document ).ready(function() {
+					$("#exampleModal").modal('show');
+				});
+			</script>
+		<% } %>
 
 		<form action="/noticias/salvar" method="POST">
 			<div class="form-group">
 				<label for="titulo">Titulo</label>
-				<input type="text" class="form-control" id="titulo" name="titulo" placeholder="titulo da notíocia">
+				<input type="text" class="form-control" id="titulo" name="titulo" value="<%=noticia.titulo%>" placeholder="titulo da notíocia">
 			</div>
 			<div class="form-group">
 				<label for="resumo">Resumo</label>
-				<input type="text" class="form-control" id="resumo" name="resumo" placeholder="Resumo da notíocia">
+				<input type="text" class="form-control" id="resumo" name="resumo" value="<%=noticia.resumo%>" placeholder="Resumo da notíocia">
 			</div>
 			<div class="form-group">
 				<label for="autor">Nome do autor</label>
-				<input type="text" class="form-control" id="autor" name="autor" placeholder="Autor da notíocia">
+				<input type="text" class="form-control" id="autor" name="autor" value="<%=noticia.autor%>" placeholder="Autor da notíocia">
 			</div>
 			<div class="form-group">
 				<label for="data_notici">Data dos fatos</label>
-				<input type="date" class="form-control" id="data_notici" name="data_notici" placeholder="Data da notíocia">
+				<input type="date" class="form-control" id="data_notici" name="data_notici" value="<%=noticia.dara_notici%>" placeholder="Data da notíocia">
 			</div>
 			<div class="form-group">
 				<label for="noticia">Notícia</label>
-				<textarea class="form-control" id="noticia" name="noticia" rows="5" cols="30" placeholder="Conteúdo da notícia"></textarea>
+				<textarea class="form-control" id="noticia" name="noticia" rows="5" cols="30" placeholder="Conteúdo da notícia"><%=noticia.noticia%></textarea>
 			</div>
 
 			<div class="form-group">
