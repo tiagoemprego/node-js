@@ -42,5 +42,11 @@ a:hover{
 .ver_mais{
 	text-align: center;
 	background:#FFF;
-	padding:20px;
+	padding:20px 0;
+}
+
+.alert>ul{
+	margin-bottom: 0;
+	list-style: inside;
+	padding: 0;
 }

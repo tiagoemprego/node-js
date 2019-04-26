@@ -12,8 +12,11 @@ module.exports.noticia = function (aplication, req, res) {
     var connection = aplication.config.dbConnection();
     var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
 
+    //# get id_noticia da url e passando por parametro para o getNoticia(NoticiasDAO)
+    var id_noticia = req.query;
+
     //# o getNoticia esta sendo chamado da pasta de model #//
-    noticiaModel.getNoticia(function (error, result) {
+    noticiaModel.getNoticia(id_noticia, function (error, result) {
         res.render('noticias/noticia', {noticia: result})
     });
 };
