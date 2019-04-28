@@ -22,6 +22,11 @@ NoticiasDAO.prototype.get5ultimasnoticias = function (callback)
     this._connection.query('select * from noticias order by data_notici desc limit 5', callback);
 };
 
+NoticiasDAO.prototype.updateNoticiaDAO = function (id_noticia_edit, callback)
+{
+    this._connection.query('select * from noticias where id_noticia ='+ id_noticia_edit.id_noticia, callback);
+};
+
 module.exports = function () {
     return NoticiasDAO;
 };

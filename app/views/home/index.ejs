@@ -25,22 +25,24 @@
 		</div>
 	</div>
 	<div class="row">
-		<% for (var i=2; i<noticias.length; i++) {%>
-			<div class="col-md-4" <%= noticias[i].id_noticia%2 ? 'style=padding:0' : '' %> >
-				<div class="noticia_wrapper">
-					<span class="noticia_autor"><%= noticias[i].autor%></span>
-					<a href="/noticia?id_noticia=<%= noticias[i].id_noticia %>" class="noticia_titulo"><%= noticias[i].titulo%></a>
-					<span class="noticia_data"><%= noticias[i].data_notici%></span>
-					<br />
-					<p class="noticia_resumo">
-						<%= noticias[i].resumo%>
-					</p>
+		<% if(noticias.length > 0) {%>
+			<% for (var i=2; i<noticias.length; i++) {%>
+				<div class="col-md-4" <%= noticias[i].id_noticia == 2 ? 'style=padding:0' : '' %> >
+					<div class="noticia_wrapper">
+						<span class="noticia_autor"><%= noticias[i].autor %></span>
+						<a href="/noticia?id_noticia=<%= noticias[i].id_noticia %>" class="noticia_titulo"><%= noticias[i].titulo%></a>
+						<span class="noticia_data"><%= noticias[i].data_notici%></span>
+						<br />
+						<p class="noticia_resumo">
+							<%= noticias[i].resumo%>
+						</p>
+					</div>
 				</div>
-			</div>
+			<% }%>
 		<% }%>
 	</div>
 </div>
-<div class="row ver_mais">
+<div class="ver_mais">
 	<button type="button" class="btn btn-default"><a href="/noticias">Ver todas as notícias</a></button>
 </div>
 <%- include('../_/footer'); -%>

@@ -9,4 +9,9 @@ module.exports = function(aplication)
     {
         aplication.app.controllers.noticias.noticia(aplication, req, res)
     });
+
+    aplication.get('/alterar-noticia', function (req, res)
+    {
+        aplication.app.controllers.noticias.alterNoticia(aplication, req, res)
+    });
 };

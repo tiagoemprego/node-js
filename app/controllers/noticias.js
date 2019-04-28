@@ -1,14 +1,16 @@
-module.exports.noticias = function (aplication, req, res) {
+module.exports.noticias = function (aplication, req, res)
+{
     var connection = aplication.config.dbConnection();
     var noticiasModel = new aplication.app.models.NoticiasDAO(connection);
 
-    //# o getNoticias esta sendo chamado da pasta de model #//
-    noticiasModel.getNoticias(function (error,result) {
+    noticiasModel.getNoticias(function (error,result)
+    {
         res.render("noticias/noticias", {noticias: result});
     });
 };
 
-module.exports.noticia = function (aplication, req, res) {
+module.exports.noticia = function (aplication, req, res)
+{
     var connection = aplication.config.dbConnection();
     var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
 
@@ -16,7 +18,21 @@ module.exports.noticia = function (aplication, req, res) {
     var id_noticia = req.query;
 
     //# o getNoticia esta sendo chamado da pasta de model #//
-    noticiaModel.getNoticia(id_noticia, function (error, result) {
+    noticiaModel.getNoticia(id_noticia, function (error, result)
+    {
         res.render('noticias/noticia', {noticia: result})
     });
+};
+
+module.exports.alterNoticia = function (aplication, req, res)
+{
+    var connection = aplication.config.dbConnection();
+    var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
+
+    var  id_noticia_edit = req.query;
+
+    noticiaModel.updateNoticiaDAO(id_noticia_edit, function (error, result)
+    {
+        res.render('admin/form_alter_noticia', {noticia: result})
+    })
 };
