@@ -24,14 +24,14 @@ module.exports.noticia = function (aplication, req, res)
     });
 };
 
-module.exports.alterNoticia = function (aplication, req, res)
+module.exports.alterarNoticia = function (aplication, req, res)
 {
     var connection = aplication.config.dbConnection();
     var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
 
     var  id_noticia_edit = req.query;
 
-    noticiaModel.updateNoticiaDAO(id_noticia_edit, function (error, result)
+    noticiaModel.getUpdateNoticiaDAO(id_noticia_edit, function (error, result)
     {
         res.render('admin/form_alter_noticia', {noticia: result})
     })

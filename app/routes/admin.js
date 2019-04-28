@@ -9,4 +9,9 @@ module.exports = function(aplication)
     {
         aplication.app.controllers.admin.noticias_salvar(aplication, req, res);
     });
+
+    aplication.post('/alterar-noticia/update', function (req, res)
+    {
+        aplication.app.controllers.admin.update_DAO(aplication, req, res);
+    });
 };
