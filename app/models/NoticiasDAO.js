@@ -36,7 +36,7 @@ NoticiasDAO.prototype.updateDAO = async function(noticiaUpdate, callback)
 //delete noticia
 NoticiasDAO.prototype.deleteDAO = function(id_delete, callback)
 {
-    this._connection.query('delete noticias where id_noticia ='+id_delete, callback);
+    this._connection.query('delete from noticias where id_noticia ='+ id_delete.id_noticia, callback);
 };
 
 module.exports = function () {

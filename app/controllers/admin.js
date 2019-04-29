@@ -49,15 +49,13 @@ module.exports.update_DAO = function (aplication, req, res) {
 };
 
 // excluir noticia
-module.exports.delete_noticia = function (aplication, req, res) {
+module.exports.delete_noticia = function (aplication, req, res)
+{
     var id_delete = req.query;
+    var connection = aplication.config.dbConnection();
+    var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
 
-    console.log(id_delete);
-
-    const connection = aplication.config.dbConnection();
-    const noticiasModel = aplication.app.models.NoticiasDAO(connection);
-
-    noticiasModel.deleteDAO(id_delete, function () {
+    noticiaModel.deleteDAO(id_delete, function () {
         res.redirect('/noticias');
     })
 };

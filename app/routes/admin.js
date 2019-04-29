@@ -22,7 +22,7 @@ module.exports = function(aplication)
     });
 
     // delete noticias
-    aplication.post('/delete/noticia', function (req, res)
+    aplication.get('/noticia/delete', function (req, res)
     {
         aplication.app.controllers.admin.delete_noticia(aplication, req, res);
     });
