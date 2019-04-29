@@ -1,7 +1,7 @@
 <%- include('../_/header'); -%>
 <div class="container">
 	<div class="row">
-		<div class="<%= noticias.length == 1 ? 'col-md-12' : 'col-md-8' %>" style="padding-right: 0;">
+		<div class="<%= noticias.length <= 1 ? 'col-md-12' : 'col-md-8' %>" style="padding-right: 0;">
 			<div class="noticia_wrapper">
 				<% if(noticias.length > 0) {%>
 					<span class="noticia_autor"><%= noticias[0].autor%></span>
@@ -12,7 +12,7 @@
 						<%= noticias[0].resumo%>
 					</p>
 					<% }else {%>
-						<p>Nenhuma notícia cadastrada!</p>
+						<p>Nenhuma notícia cadastrada! <strong>:</strong>(</p>
 					<% }%>
 			</div>
 		</div>
