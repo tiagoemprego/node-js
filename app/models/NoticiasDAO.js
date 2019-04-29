@@ -28,8 +28,8 @@ NoticiasDAO.prototype.getUpdateNoticiaDAO = function (id_noticia_edit, callback)
     this._connection.query('select * from noticias where id_noticia ='+ id_noticia_edit.id_noticia, callback);
 };
 
-NoticiasDAO.prototype.updateDAO = function(noticiaUpdate, callback){
-    this._connection.query('select * from noticias update where id_ntici = 1',noticiaUpdate, callback)
+NoticiasDAO.prototype.updateDAO = async function(noticiaUpdate, callback){
+    this._connection.query('update noticias set titulo="'+noticiaUpdate.titulo+'" where id_noticia ='+noticiaUpdate.id, callback);
 };
 
 module.exports = function () {

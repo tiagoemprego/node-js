@@ -37,14 +37,12 @@ module.exports.noticias_salvar = function (aplication, req, res) {
 
 module.exports.update_DAO = function (aplication, req, res) {
     var noticiaUpdate = req.body;
-    var getIdNoticia = req.query;
 
     var connection = aplication.config.dbConnection();
     var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
 
-    console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>",getIdNoticia);
-
     noticiaModel.updateDAO(noticiaUpdate, function () {
-        res.redirect('/noticia?id_noticia='+getIdNoticia);
+        res.redirect('/noticia?id_noticia='+noticiaUpdate.id);
+        // res.send(getIdNoticia)
     });
 };
