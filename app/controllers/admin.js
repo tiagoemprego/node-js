@@ -35,6 +35,8 @@ module.exports.noticias_salvar = function (aplication, req, res) {
     });
 };
 
+
+//alterar, atualizar noticia
 module.exports.update_DAO = function (aplication, req, res) {
     var noticiaUpdate = req.body;
 
@@ -43,6 +45,19 @@ module.exports.update_DAO = function (aplication, req, res) {
 
     noticiaModel.updateDAO(noticiaUpdate, function () {
         res.redirect('/noticia?id_noticia='+noticiaUpdate.id);
-        // res.send(getIdNoticia)
     });
+};
+
+// excluir noticia
+module.exports.delete_noticia = function (aplication, req, res) {
+    var id_delete = req.query;
+
+    console.log(id_delete);
+
+    const connection = aplication.config.dbConnection();
+    const noticiasModel = aplication.app.models.NoticiasDAO(connection);
+
+    noticiasModel.deleteDAO(id_delete, function () {
+        res.redirect('/noticias');
+    })
 };

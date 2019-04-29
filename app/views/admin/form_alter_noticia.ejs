@@ -1,5 +1,19 @@
 <%- include('../_/header'); -%>
 <div class="container">
+    <% if(validacao.length > 0){%>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger">
+                    <strong>Atenção!</strong>
+                    <ul>
+                        <% validacao.forEach(function(error){%>
+                            <li><%= error.msg %></li>
+                        <% });%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <% }%>
     <div class="row">
         <div class="col-md-12">
             <form action="/alterar-noticia/update" method="post">

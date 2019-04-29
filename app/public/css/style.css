@@ -56,3 +56,8 @@ a:hover{
 	right: 30px;
 	top: 15px;
 }
+
+.edit a{
+	min-width: 70px;
+	border-radius: 0;
+}

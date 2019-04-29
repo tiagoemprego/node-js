@@ -28,8 +28,15 @@ NoticiasDAO.prototype.getUpdateNoticiaDAO = function (id_noticia_edit, callback)
     this._connection.query('select * from noticias where id_noticia ='+ id_noticia_edit.id_noticia, callback);
 };
 
-NoticiasDAO.prototype.updateDAO = async function(noticiaUpdate, callback){
-    this._connection.query('update noticias set titulo="'+noticiaUpdate.titulo+'" where id_noticia ='+noticiaUpdate.id, callback);
+NoticiasDAO.prototype.updateDAO = async function(noticiaUpdate, callback)
+{
+    this._connection.query('update noticias set titulo="'+noticiaUpdate.titulo+'",resumo="'+noticiaUpdate.resumo+'",autor="'+noticiaUpdate.autor+'",noticia="'+noticiaUpdate.noticia+'" where id_noticia ='+noticiaUpdate.id, callback);
+};
+
+//delete noticia
+NoticiasDAO.prototype.deleteDAO = function(id_delete, callback)
+{
+    this._connection.query('delete noticias where id_noticia ='+id_delete, callback);
 };
 
 module.exports = function () {

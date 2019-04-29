@@ -11,7 +11,14 @@
 					<%= noticia[0].noticia %>
 				</p>
 				<div class="edit">
-					<a href="/alterar-noticia?id_noticia=<%= noticia[0].id_noticia%>">Editar</a>
+					<p>
+						<a class="btn btn-primary" href="/alterar-noticia?id_noticia=<%= noticia[0].id_noticia%>">Editar</a>
+					</p>
+					<p>
+					<form action="/delete/noticia">
+						<button type="submit" class="btn btn-danger" value="Excluir">Excluir</button>
+					</form>
+					</p>
 				</div>
 			</div>
 		</div>

@@ -33,6 +33,9 @@ module.exports.alterarNoticia = function (aplication, req, res)
 
     noticiaModel.getUpdateNoticiaDAO(id_noticia_edit, function (error, result)
     {
-        res.render('admin/form_alter_noticia', {noticia: result})
+        res.render('admin/form_alter_noticia', {
+            noticia: result,
+            validacao: {}
+        })
     })
 };
