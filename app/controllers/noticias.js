@@ -39,3 +39,16 @@ module.exports.alterarNoticia = function (aplication, req, res)
         })
     })
 };
+
+module.exports.insertNoticias = function (aplication, req, res)
+{
+    const  page = req.query;
+
+    var connection = aplication.config.dbConnection();
+    var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
+
+    noticiaModel.loadNoticias(page, function (error, result)
+    {
+        res.send(result);
+    })
+};

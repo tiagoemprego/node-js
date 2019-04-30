@@ -1,12 +1,12 @@
 <%- include('../_/header'); -%>
 <div class="container">
-	<div class="row">
+	<div class="row" id="add_template">
 		<% if (noticias.length > 0) {%>
 			<% noticias.forEach(function(itens){ %>
 				<div class="col-md-12">
 					<div class="noticia_wrapper">
-						<span class="noticia_autor"><%= itens.autor %></span>
-						<a href="/noticia?id_noticia=<%= itens.id_noticia %>" class="noticia_titulo"><%= itens.titulo %></a>
+						<span class="noticia_autor"><%=itens.autor%></span>
+						<a href="/noticia?id_noticia=<%=itens.id_noticia%>" class="noticia_titulo"><%= itens.titulo %></a>
 						<span class="noticia_data"><%= itens.data_notici %></span>
 						<br />
 						<p class="noticia_resumo">
@@ -23,5 +23,45 @@
 			</div>
 		<% }%>
 	</div>
+			<div class="ver_mais">
+				<a class="btn btn-default" href="#">Carregar notícias</a>
+			</div>
 </div>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		cont = 3
+		$('.btn').on('click', function (e) {
+			e.preventDefault();
+			$.ajax({
+				url: "http://localhost:3000/noticias/load/?page="+cont,
+				type : 'get',
+				beforeSend : function(){
+					 $(".btn").text("Carregando...");
+				}
+			}).done(function(result) {
+				if (result.length>0){
+					result.forEach(function (r) {
+						var template = `<div class="col-md-12">
+											<div class="noticia_wrapper">
+												<span class="noticia_autor">${r.autor}</span>
+												<a href="/noticia?id_noticia=${r.id_noticia}" class="noticia_titulo">${r.titulo}</a>
+												<span class="noticia_data">${r.data_notici}</span>
+												<br />
+												<p class="noticia_resumo">
+													${r.resumo}
+												</p>
+												</div>
+											</div>`
+						$('#add_template').append(template);
+						$(".btn").text("Carregar mais notícias");
+					});
+				}else{
+					$(".btn").text("Sem notícias");
+					$(".btn").addClass('disabled');
+				}
+				cont = cont + 3;
+			});
+		})
+	});
+</script>
 <%- include('../_/footer'); -%>
