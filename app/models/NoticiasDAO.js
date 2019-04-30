@@ -12,6 +12,12 @@ NoticiasDAO.prototype.getNoticia = function (id_noticia, callback)
     this._connection.query('select * from noticias where id_noticia ='+ id_noticia.id_noticia, callback);
 };
 
+//GET comments noticias
+NoticiasDAO.prototype.getCommentsNoticia = function(callback)
+{
+    this_.connection.query('select * from comments', callback)
+};
+
 NoticiasDAO.prototype.salvarNoticia = function (noticia,callback)
 {
     this._connection.query('insert into noticias set ? ', noticia, callback);

@@ -24,5 +24,27 @@
 	<div class="ver_mais">
 		<a class="btn btn-info" href="/noticias">todas as notícias</a>
 	</div>
+	<br>
+	<div class="comentario">
+		<h4>Adicionar comentário</h4>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<form id="form-comments" action="/noticias/comments" method="post">
+				<div class="form-group">
+					<label for="autor">Autor do comentário</label>
+					<input type="text" class="form-control" id="autor" name="autor">
+				</div>
+				<div class="form-group">
+					<label for="noticia">Comentário</label>
+					<textarea class="form-control" id="noticia" name="noticia" rows="5" cols="20" ></textarea>
+				</div>
+
+				<div class="form-group">
+					<input type="submit" class="btn btn-primary" value="Enviar comentário">
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 <%- include('../_/footer'); -%>
