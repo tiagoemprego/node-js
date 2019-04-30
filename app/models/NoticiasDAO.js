@@ -17,9 +17,17 @@ NoticiasDAO.prototype.salvarNoticia = function (noticia,callback)
     this._connection.query('insert into noticias set ? ', noticia, callback);
 };
 
-NoticiasDAO.prototype.get5ultimasnoticias = function (callback)
+NoticiasDAO.prototype.get5ultimasnoticias = function (pages, callback)
 {
-    this._connection.query('select * from noticias order by data_notici desc limit 5', callback);
+    var page = 3;
+
+    if (parseInt(pages.page)) {
+        page = 3 + parseInt(pages.page);
+    }else{
+        page + 3;
+    }
+    console.log(page);
+    this._connection.query('select * from noticias order by data_notici desc limit '+page, callback);
 };
 
 //Pre uptade da noticia
