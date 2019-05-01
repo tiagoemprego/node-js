@@ -14,5 +14,10 @@ module.exports = function(aplication)
     aplication.get('/noticias/load', function (req, res)
     {
         aplication.app.controllers.noticias.insertNoticias(aplication, req, res);
-    })
+    });
+
+    aplication.post('/noticias/comments', function (req, res)
+    {
+        aplication.app.controllers.noticias.salvarComentario(aplication, req, res);
+    });
 };

@@ -52,3 +52,18 @@ module.exports.insertNoticias = function (aplication, req, res)
         res.send(result);
     })
 };
+
+
+//section comments
+module.exports.salvarComentario = function (aplication, req, res)
+{
+    var comment = req.body;
+
+    var connection = aplication.config.dbConnection();
+    var commentModel = new aplication.app.models.CommentsDAO(connection);
+
+    commentModel.insertComment(comment, function (error, result)
+    {
+        res.redirect('/noticia?id_noticia='+comment.comment_id);
+    })
+};
