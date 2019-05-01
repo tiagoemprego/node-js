@@ -1,5 +1,8 @@
 <%- include('../_/header'); -%>
 <div class="container">
+
+	<%- include('../_/modals'); -%>
+
 	<div class="row">
 		<div class="col-md-12">
 			<div class="noticia_wrapper">
@@ -15,7 +18,8 @@
 						<a class="btn btn-primary" href="/alterar-noticia?id_noticia=<%= noticia[0].id_noticia%>">Editar</a>
 					</p>
 					<p>
-						<a id="delete" class="btn btn-danger" href="/noticia/delete?id_noticia=<%= noticia[0].id_noticia%>">Excluir</a>
+						<!--<a id="delete" class="btn btn-danger" href="/noticia/delete?id_noticia=<%= noticia[0].id_noticia%>">Excluir</a>-->
+						<a id="delete" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" href="#">Excluir</a>
 					</p>
 				</div>
 			</div>

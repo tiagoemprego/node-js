@@ -57,7 +57,7 @@ a:hover{
 	top: 15px;
 }
 
-.edit a{
-	min-width: 70px;
+.edit a,.btn{
+	min-width: 90px;
 	border-radius: 0;
 }
