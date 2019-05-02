@@ -67,3 +67,16 @@ module.exports.salvarComentario = function (aplication, req, res)
         res.redirect('/noticia?id_noticia='+comment.comment_id);
     })
 };
+
+module.exports.getComments = function (aplication, req, res)
+{
+    var id_comment = req.query;
+
+    var connection = aplication.config.dbConnection();
+    var commentModel = new aplication.app.models.CommentsDAO(connection);
+
+    commentModel.commentsFilter(id_comment,function (error, result)
+    {
+        res.send(result);
+    });
+};
