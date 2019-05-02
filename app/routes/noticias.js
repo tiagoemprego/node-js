@@ -10,11 +10,15 @@ module.exports = function(aplication)
         aplication.app.controllers.noticias.noticia(aplication, req, res)
     });
 
+
+    
     //rota para paginação da pagin de noticias
     aplication.get('/noticias/load', function (req, res)
     {
         aplication.app.controllers.noticias.insertNoticias(aplication, req, res);
     });
+
+
 
     //Sections comments
     aplication.post('/noticias/comments', function (req, res)

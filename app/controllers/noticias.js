@@ -22,7 +22,7 @@ module.exports.noticia = function (aplication, req, res)
     {
         res.render('noticias/noticia', {
             noticia: result,
-            validacao: {}
+            validacao: error
         })
     });
 };
@@ -69,6 +69,10 @@ module.exports.salvarComentario = function (aplication, req, res)
     var erros =  req.validationErrors();
 
     if (erros){
+        // res.render("/noticia?id_noticia="+comment.comment_id, {
+        //     validacao: erros,
+        // });
+
         res.redirect('/noticia?id_noticia='+comment.comment_id);
         return
     }
