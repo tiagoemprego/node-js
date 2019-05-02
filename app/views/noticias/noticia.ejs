@@ -1,60 +1,70 @@
 <%- include('../_/header'); -%>
 <div class="container">
 	<%- include('../_/modals'); -%>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="noticia_wrapper">
-				<span class="noticia_autor"><%= noticia[0].autor %></span>
-				<p href="noticia.html" class="noticia_titulo"><%= noticia[0].titulo %></p>
-				<span class="noticia_data"><%= noticia[0].data_notici %></span>
-				<br />
-				<p class="noticia_resumo"><%= noticia[0].noticia %></p>
-				<div class="edit">
-					<p><a class="btn btn-primary" href="/alterar-noticia?id_noticia=<%= noticia[0].id_noticia%>">Editar</a></p>
-					<p><a id="delete" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" href="#">Excluir</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="ver_mais">
-		<a class="btn btn-info" href="/noticias">todas as notícias</a>
-	</div>
-	<br />
-	<div class="comentario">
-		<h4>Adicionar comentário</h4>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<form id="form-comments" action="/noticias/comments" method="post" autocomplete="off">
-				<div class="form-group">
-					<label for="autor">Autor do comentário</label>
-					<input type="text" class="form-control" id="autor" name="autor">
-				</div>
-				<div class="form-group">
-					<label for="autor">Email</label>
-					<input type="email" class="form-control" id="email" name="email">
-				</div>
-				<div class="form-group">
-					<label for="comentario">Comentário</label>
-					<textarea class="form-control" id="comentario" name="comentario" rows="5" cols="20" ></textarea>
-				</div>
-				<input type="hidden" name="publicar" value="false">
-				<input type="hidden" name="comment_id" value="<%= noticia[0].id_noticia%>">
-				<div class="form-group">
-					<input type="submit" class="btn btn-primary" value="Enviar comentário">
-				</div>
-			</form>
-		</div>
-	</div>
-	<section class="comments">
+	<section id="noticia">
 		<div class="row">
-			<div class="col-12 pt-4">
-				<div class="wrhapper-comments p-3 mb-5" style="background: #fff;border-radius: 3px;box-shadow: 1px 1px 2px #C3C3C3;">
-					<p><strong>Autor:</strong> Joao das neves</p>
-					<p>comentario</p>
-					<p class="m-0"><strong>Data:</strong> 22/04/2019</p>
+			<div class="col-md-12">
+				<div class="noticia_wrapper">
+					<span class="noticia_autor"><%= noticia[0].autor %></span>
+					<p href="noticia.html" class="noticia_titulo"><%= noticia[0].titulo %></p>
+					<span class="noticia_data"><%= noticia[0].data_notici %></span>
+					<br />
+					<p class="noticia_resumo"><%= noticia[0].noticia %></p>
+					<div class="edit">
+						<p><a class="btn btn-primary" href="/alterar-noticia?id_noticia=<%= noticia[0].id_noticia%>">Editar</a></p>
+						<p><a id="delete" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" href="#">Excluir</a></p>
+					</div>
 				</div>
 			</div>
+		</div>
+		<div class="ver_mais">
+			<a class="btn btn-info" href="/noticias">todas as notícias</a>
+		</div>
+		<br />
+		<div class="comentario">
+			<h4>Adicionar comentário</h4>
+		</div>
+	</section>
+	<section id="form-comments">
+		<div class="row">
+			<div class="col-md-12">
+				<form id="form-comments" action="/noticias/comments" method="post" autocomplete="off">
+					<div class="form-group mb-1">
+						<label for="autor">Autor do comentário</label>
+						<input type="text" class="form-control" id="autor" name="autor">
+					</div>
+					<div class="form-group mb-1">
+						<label for="autor">Email</label>
+						<input type="email" class="form-control" id="email" name="email">
+					</div>
+					<div class="form-group">
+						<label for="comentario">Comentário</label>
+						<textarea class="form-control" id="comentario" name="comentario" rows="5" cols="20" ></textarea>
+					</div>
+					<input type="hidden" name="publicar" value="false">
+					<input type="hidden" name="comment_id" value="<%= noticia[0].id_noticia%>">
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary" value="Enviar comentário">
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<section id="comments" class="comments">
+		<div class="row">
+			<h3 class="pl-3 pt-4">Comentários da otícia</h3>
+			<% for (var i=0; i<3; i++){%>
+				<div class="col-12">
+					<div class="wrhapper-comments p-3 mb-3" style="background: #fff;border-radius: 3px;box-shadow: 1px 1px 2px #C3C3C3;">
+						<p><strong>Autor:</strong> Joao das neves</p>
+						<p>comentario</p>
+						<p class="m-0"><strong>Data:</strong> 22/04/2019</p>
+					</div>
+				</div>
+			<% }%>
+		</div>
+		<div class="ver_mais mb-5">
+			<a class="btn btn-info load-comments" href="#">Carregar mais comentarios</a>
 		</div>
 	</section>
 </div>

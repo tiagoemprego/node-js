@@ -20,7 +20,10 @@ module.exports.noticia = function (aplication, req, res)
     //# o getNoticia esta sendo chamado da pasta de model #//
     noticiaModel.getNoticia(id_noticia, function (error, result)
     {
-        res.render('noticias/noticia', {noticia: result})
+        res.render('noticias/noticia', {
+            noticia: result,
+            validacao: {}
+        })
     });
 };
 
@@ -54,10 +57,21 @@ module.exports.insertNoticias = function (aplication, req, res)
 };
 
 
-//section comments
+//section comments add e verificação de validação dos campos de formularios
 module.exports.salvarComentario = function (aplication, req, res)
 {
     var comment = req.body;
+
+    req.assert('autor','Resumo é obrigatorio!').notEmpty();
+    req.assert('email','Data é obrigatorio!').notEmpty();
+    req.assert('comentario','Noticia é obrigatorio!').notEmpty();
+
+    var erros =  req.validationErrors();
+
+    if (erros){
+        res.redirect('/noticia?id_noticia='+comment.comment_id);
+        return
+    }
 
     var connection = aplication.config.dbConnection();
     var commentModel = new aplication.app.models.CommentsDAO(connection);
@@ -77,6 +91,6 @@ module.exports.getComments = function (aplication, req, res)
 
     commentModel.commentsFilter(id_comment,function (error, result)
     {
-        res.send(result);
+        res.status(200).send(result);
     });
 };
