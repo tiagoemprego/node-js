@@ -1,12 +1,24 @@
-module.exports.noticias = function (aplication, req, res)
-{
-    var connection = aplication.config.dbConnection();
-    var noticiasModel = new aplication.app.models.NoticiasDAO(connection);
+// module.exports.noticias = function (aplication, req, res)
+// {
+//     var connection = aplication.config.dbConnection();
+//     var noticiasModel = new aplication.app.models.NoticiasDAO(connection);
+//
+//     noticiasModel.getNoticias(function (error,result)
+//     {
+//         res.render("noticias/noticias", {noticias: result});
+//     });
+// };
 
-    noticiasModel.getNoticias(function (error,result)
-    {
-        res.render("noticias/noticias", {noticias: result});
-    });
+module.exports = {
+    noticias: (aplication, req, res) => {
+        var connection = aplication.config.dbConnection();
+        var noticiasModel = new aplication.app.models.NoticiasDAO(connection);
+
+        noticiasModel.getNoticias(function (error,result)
+        {
+            res.render("noticias/noticias", {noticias: result});
+        });
+    }
 };
 
 module.exports.noticia = function (aplication, req, res)

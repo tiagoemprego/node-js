@@ -59,3 +59,11 @@ module.exports.delete_noticia = function (aplication, req, res)
         res.redirect('/noticias');
     })
 };
+
+module.exports = {
+
+    login: (aplication, req, res) => {
+        res.render('default/login');
+    },
+
+};
