@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/tiagoemprego/node-js-aulas#readme",
   "dependencies": {
+    "admin-lte-express": "^1.4.2",
     "body-parser": "^1.18.3",
     "consign": "^0.1.6",
     "ejs": "^2.6.1",
