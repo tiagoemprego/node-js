@@ -27,8 +27,8 @@ module.exports = function(aplication)
         aplication.app.controllers.admin.delete_noticia(aplication, req, res);
     });
 
-    aplication.get('/login', function (req, res)
-    {
-       aplication.app.controllers.admin.login(aplication, req, res);
-    });
+    // aplication.get('/login', function (req, res)
+    // {
+    //    aplication.app.controllers.admin.login(aplication, req, res);
+    // });
 };

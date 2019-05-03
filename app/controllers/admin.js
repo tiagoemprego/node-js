@@ -60,10 +60,10 @@ module.exports.delete_noticia = function (aplication, req, res)
     })
 };
 
-module.exports = {
-
-    login: (aplication, req, res) => {
-        res.render('default/login');
-    },
-
-};
+// module.exports = {
+//
+//     login: (aplication, req, res) => {
+//         res.render('default/login');
+//     },
+//
+// };
