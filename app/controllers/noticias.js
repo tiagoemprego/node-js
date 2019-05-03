@@ -1,5 +1,6 @@
 
 module.exports = {
+
     noticias: (aplication, req, res) => {
         var connection = aplication.config.dbConnection();
         var noticiasModel = new aplication.app.models.NoticiasDAO(connection);
