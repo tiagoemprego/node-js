@@ -30,7 +30,7 @@ module.exports = {
 
     alterarNoticia: (aplication, req, res) => {
         var connection = aplication.config.dbConnection();
-        var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
+        var noticiaModel = new aplication.app.models.AdminNoticiasDAO(connection);
 
         var  id_noticia_edit = req.query;
 

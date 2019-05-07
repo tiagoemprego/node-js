@@ -41,7 +41,7 @@ module.exports.update_DAO = function (aplication, req, res) {
     var noticiaUpdate = req.body;
 
     var connection = aplication.config.dbConnection();
-    var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
+    var noticiaModel = new aplication.app.models.AdminNoticiasDAO(connection);
 
     noticiaModel.updateDAO(noticiaUpdate, function () {
         res.redirect('/noticia?id_noticia='+noticiaUpdate.id);
@@ -53,7 +53,7 @@ module.exports.delete_noticia = function (aplication, req, res)
 {
     var id_delete = req.query;
     var connection = aplication.config.dbConnection();
-    var noticiaModel = new aplication.app.models.NoticiasDAO(connection);
+    var noticiaModel = new aplication.app.models.AdminNoticiasDAO(connection);
 
     noticiaModel.deleteDAO(id_delete, function () {
         res.redirect('/noticias');
