@@ -20,12 +20,11 @@
 		<div class="ver_mais">
 			<a class="btn btn-info" href="/noticias">todas as notícias</a>
 		</div>
-		<br />
+	</section>
+	<section id="form-comments" class="p-3 mt-5" style="background: #ebebeb; border-radius: 3px;">
 		<div class="comentario">
 			<h4>Adicionar comentário</h4>
 		</div>
-	</section>
-	<section id="form-comments">
 		<div class="row">
 			<div class="col-md-12">
 				<form id="form-comments" action="/noticias/comments" method="post" autocomplete="off">
@@ -50,22 +49,55 @@
 			</div>
 		</div>
 	</section>
-	<section id="comments" class="comments">
+	<section id="comments" class="comments p-3 mt-4" style="background: #ebebeb; border-radius: 3px;">
 		<div class="row">
-			<h3 class="pl-3 pt-4">Comentários da otícia</h3>
-			<% for (var i=0; i<3; i++){%>
-				<div class="col-12">
-					<div class="wrhapper-comments p-3 mb-3" style="background: #fff;border-radius: 3px;box-shadow: 1px 1px 2px #C3C3C3;">
-						<p><strong>Autor:</strong> Joao das neves</p>
-						<p>comentario</p>
-						<p class="m-0"><strong>Data:</strong> 22/04/2019</p>
-					</div>
-				</div>
-			<% }%>
+			<div id="add_template" class="col-12 p-0">
+			<h3 class="pl-3 pb-4">Comentários da otícia</h3>
+
+			</div>
 		</div>
 		<div class="ver_mais mb-5">
 			<a class="btn btn-info load-comments" href="#">Carregar mais comentarios</a>
 		</div>
 	</section>
 </div>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		var cont = 0
+
+		function loadComments() {
+			$.ajax({
+				url: "/comments/filter/?id=<%= noticia[0].id_noticia%>&page="+cont,
+				type : 'get',
+				beforeSend : function(){
+					$(".load-comments").text("Carregando...");
+				}
+			}).done(function(result) {
+				if (result.length>0){
+					result.forEach(function (r) {
+						var template = `<div class="col">
+											<div class="wrhapper-comments p-3 mb-3" style="background: #fff;border-radius: 3px;box-shadow: 1px 1px 2px #C3C3C3;">
+												<p><strong>Autor:</strong> ${r.autor}</p>
+												<p>${r.comentario}</p>
+												<p class="m-0"><strong>Data:</strong> ${r.data_comment}</p>
+											</div>
+										</div>`;
+						$('#add_template').append(template);
+						$(".load-comments").text("Carregar mais comentários");
+					});
+				}else{
+					$(".load-comments").text("Sem comentários").addClass('disabled');
+				}
+				cont = cont + 2;
+			});
+		}
+
+		loadComments();
+
+		$('.load-comments').on('click', function (e) {
+			e.preventDefault();
+			loadComments();
+		})
+	});
+</script>
 <%- include('../_/footer'); -%>

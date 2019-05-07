@@ -33,7 +33,7 @@
 		$('.btn').on('click', function (e) {
 			e.preventDefault();
 			$.ajax({
-				url: "http://localhost:3000/noticias/load/?page="+cont,
+				url: "/noticias/load/?page="+cont,
 				type : 'get',
 				beforeSend : function(){
 					$(".btn").text("Carregando...");
