@@ -26,9 +26,4 @@ module.exports = function(aplication)
     {
         aplication.app.controllers.admin.delete_noticia(aplication, req, res);
     });
-
-    aplication.get('/admin', function (req, res)
-    {
-       res.render('admin/index');
-    });
 };
