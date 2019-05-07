@@ -11,7 +11,7 @@ module.exports = function(aplication)
     });
 
 
-    
+
     //rota para paginação da pagin de noticias
     aplication.get('/noticias/load', function (req, res)
     {
@@ -26,6 +26,8 @@ module.exports = function(aplication)
         aplication.app.controllers.noticias.salvarComentario(aplication, req, res);
     });
 
+
+    // EX: /comments/filter/?id=2&page=1
     aplication.get('/comments/filter', function (req, res)
     {
         aplication.app.controllers.noticias.getComments(aplication, req, res);
