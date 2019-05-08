@@ -1,11 +1,12 @@
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" style="background: #fff; padding: 20px;border-radius: 5px;">
         <div class="modal-body p-5 text-center">
-            Deseja <strong class="text-danger">excluir permanentemente</strong> essa noticia?
+            <h3>
+            Deseja <strong class="text-danger">excluir permanentemente</strong> essa noticia?</h3>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
             <a id="delete" class="btn btn-danger" href="/noticia/delete?id_noticia=<%= noticias[0].id_noticia %>">Excluir</a>
         </div>
     </div>

@@ -44,7 +44,8 @@ module.exports.update_DAO = function (aplication, req, res) {
     var noticiaModel = new aplication.app.models.AdminNoticiasDAO(connection);
 
     noticiaModel.updateDAO(noticiaUpdate, function () {
-        res.redirect('/noticia?id_noticia='+noticiaUpdate.id);
+        // res.redirect('/noticia?id_noticia='+noticiaUpdate.id);
+        res.redirect('/admin');
     });
 };
 
