@@ -11,6 +11,13 @@ module.exports = function(aplication)
     });
 
     //alterar noticia
+
+    //Listando noticias no admin
+    aplication.get('/admin-noticias', function (req, res)
+    {
+        aplication.app.controllers.admin.listNoticiaAdmin(aplication, req, res);
+    });
+
     aplication.get('/alterar-noticia', function (req, res)
     {
         aplication.app.controllers.noticias.alterarNoticia(aplication, req, res)
