@@ -1,60 +1,27 @@
 <%- include('../_/admin_header'); -%>
-<table width="100%">
-    <tr>
-        <th>
-            Id
-        </th>
-        <th>
-            Autor
-        </th>
-        <th>
-            Titulo
-        </th>
-        <th>
-            Notícia
-        </th>
-        <th>
-            Data
-        </th>
-        <th>
-            Comments
-        </th>
-        <th>
-            Editar
-        </th>
-        <th>
-            Excluir
-        </th>
-    </tr>
-    <% for (var i=0; i<10; i++) {%>
+<%- include('../_/modals'); -%>
+<div class="admin-noticias">
+    <table width="100%">
         <tr>
-            <td>
-                Id
-            </td>
-            <td>
-                Autor
-            </td>
-            <td>
-                Titulo
-            </td>
-            <td>
-                Notícia
-            </td>
-            <td>
-                Data
-            </td>
-            <td>
-                Comments
-            </td>
-            <td>
-                Editar
-            </td>
-            <td>
-                Excluir
-            </td>
+            <th>Id</th>
+            <th>Autor</th>
+            <th>Titulo</th>
+            <th>Data</th>
+            <th>Comments</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </tr>
-    <% }%>
-</table>
-
-
+        <% noticias.forEach(function(element){%>
+            <tr>
+                <td><%=element.id_noticia%></td>
+                <td><%=element.autor%></td>
+                <td><%= element.titulo %></td>
+                <td><%= element.data_notici %></td>
+                <td>Comments</td>
+                <td><a id="edit" class="btn btn-primary" href="/alterar-noticia?id_noticia=<%= element.id_noticia %>">Editar</a></td>
+                <td><a id="delete" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" href="#">Excluir</a></td>
+            </tr>
+        <% })%>
+    </table>
+</div>
 <%- include('../_/admin_footer'); -%>

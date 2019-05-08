@@ -2,6 +2,12 @@ function NoticiasAdminDAO(connection) {
     this._connection = connection;
 }
 
+//Apresenta as notícias na pagina de /noticias
+NoticiasAdminDAO.prototype.getNoticiasAdmin = function (callback)
+{
+    this._connection.query('select * from noticias order by data_notici', callback);
+};
+
 //Salva a noticia cadastrada no admin
 NoticiasAdminDAO.prototype.salvarNoticia = function (noticia,callback)
 {

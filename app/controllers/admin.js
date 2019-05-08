@@ -56,11 +56,16 @@ module.exports.delete_noticia = function (aplication, req, res)
     var noticiaModel = new aplication.app.models.AdminNoticiasDAO(connection);
 
     noticiaModel.deleteDAO(id_delete, function () {
-        res.redirect('/noticias');
+        res.redirect('/admin');
     })
 };
 
 module.exports.listNoticiaAdmin = function (aplication, req, res)
 {
-    res.render('admin/config_noticias');
-}
+    var connection = aplication.config.dbConnection();
+    var noticiaModel = new aplication.app.models.AdminNoticiasDAO(connection);
+
+    noticiaModel.getNoticiasAdmin( function (error, result) {
+        res.render('admin/config_noticias', {noticias: result});
+    });
+};
